@@ -32,7 +32,6 @@ dependencies:
   shared_preferences: ^2.0.10
   audioplayers: ^0.19.0
   fluttertoast: ^8.1.1
-  word_search: ^0.1.2
 
   #SQLite dependencies
 

@@ -88,7 +88,7 @@ class _ClassificationState extends State<Classification> {
               size: Size(56, 56), // button width and height
               child: InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameHome()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
                 }, // button pressed
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

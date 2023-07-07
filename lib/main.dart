@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:datesify/classify.dart';
-import 'package:datesify/game2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'info.dart';
 import 'game.dart';
 
-void main() async {/*
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences.setMockInitialValues({});*/
+  SharedPreferences.setMockInitialValues({});
   runApp(MaterialApp(title: 'Navigation Basics',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.brown),
@@ -19,7 +19,7 @@ void main() async {/*
         '/third': (context) => HelpScreen(),
         '/forth': (context) => AboutScreen(),
         '/fifth': (context) => InfoScreen(),
-        '/sixth': (context) => GameHome(),
+        '/sixth': (context) => GameScreen(),
         '/seventh': (context) => Classification()
       }));
 }
@@ -255,7 +255,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => GameHome()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
                   },
                 ),
               ),
@@ -272,111 +272,37 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) { /*return listview here*/
     return Scaffold(backgroundColor: Colors.white, appBar: AppBar(elevation: 0,),
       body:
-          SingleChildScrollView(
-            padding: EdgeInsets.only(top:30, bottom: 30),
-            child: Center(child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Introduction",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.black,
-                      fontFamily: "Inter-SemiBold",),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:20, left: 30, right: 30, bottom: 20),
-                    child:Text(
-                      "Datesify is an application that can help users classify dates fruit into their types. Users can read more information on dates fruit in this application. Lastly, users can play games in this application to learn more about dates fruit.",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.black,
-                        letterSpacing: 1.5,
-                        fontFamily: "Inter-Regular",),
-                    ),
-                  ),
+          Center(child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "DATESIFY",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.black,
+                    fontFamily: "Helvetica Neue",),
+                ),
 
-                  Text(
-                    "Terms & Condition",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.black,
-                      fontFamily: "Inter-SemiBold",),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:20, left: 30, right: 30, bottom: 20),
-                    child:Text(
-                      "All trademarks, logos, images and service marks, including these Terms as displayed on the platform whether registered or unregistered, are the intellectual property of Buah ke Sayur? and/or third parties who have allowed us to use them. And may not use, copy, reproduce, republish, upload, post, transmit, distribute, or modify this trademark in any way without our prior express written permission. Use of any material on the Platform is at your own risk.",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.black,
-                        letterSpacing: 1.5,
-                        fontFamily: "Inter-Regular",),
-                    ),
-                  ),
+                SizedBox(
+                  width: 250,
+                  height: 250,
+                  child: Image.asset('assets/datesify.png', height: 250),
+                ),
 
-                  Text(
-                    "References",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.black,
-                      fontFamily: "Inter-SemiBold",),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:20, left: 30, right: 30, bottom: 20),
-                    child:Text(
-                      "Siddiq, M., Aleid, S. M., &amp; Kader, A. A. (2014). Dates: Postharvest science, processing technology, and Health Benefits. John Wiley &amp; Sons, Inc. \nManickavasagan, A., &amp; Sukumar, E. (2012). Dates: Production, processing, food, and medicinal values. CRC Press. ",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.black,
-                        letterSpacing: 1.5,
-                        fontFamily: "Inter-Regular",),
-                    ),
-                  ),
+                Text(
+                  "creator: Alia Nadzirah\nDatesify © 2022",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black,
+                    letterSpacing: 1.5,
+                    fontFamily: "Inter-Regular",),
+                ),
 
-                  Text(
-                    "Contact",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.black,
-                      fontFamily: "Inter-SemiBold",),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:20, left: 30, right: 30, bottom: 20),
-                    child:Text(
-                      "If you have any questions about our Terms, please contact us at:\n\nEmail: aliaanadzirahh00@gmail.com\nPhone: +60139852850",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.black,
-                        letterSpacing: 1.5,
-                        fontFamily: "Inter-Regular",),
-                    ),
-                  ),
+              ]),),
 
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child:Text(
-                      "creator: Alia Nadzirah\nDatesify © 2022 FSKTM UPM",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.black,
-                        letterSpacing: 1.5,
-                        fontFamily: "Inter-SemiBold",),
-                    ),
-                  ),
-
-                ]),),
-          ),
     );
   }
 }
@@ -596,7 +522,7 @@ class _InfoScreenState extends State<InfoScreen> {
               size: Size(56, 56), // button width and height
               child: InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameHome()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
                 }, // button pressed
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -706,134 +632,133 @@ class _InfoScreenState extends State<InfoScreen> {
   }
 }
 
-class GameHome extends StatelessWidget {
-  const GameHome({Key? key}) : super(key: key);
-
+class GameScreen extends StatefulWidget {
+  final newscore;
+  GameScreen({this.newscore});
   @override
-  Widget build(BuildContext context) { /*return listview here*/
+  _GameScreenState createState() => _GameScreenState();
+}
+class _GameScreenState extends State<GameScreen> {
+  Game gm = Game();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body:
+      Column(
+          /**/
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,children: [SizedBox(width: 400,height: 45, child: IconButton(icon: const Icon(Icons.help_outline),
+              color: Colors.brown,
+              alignment: Alignment.centerRight,
+              iconSize: 45,onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const InstructionGame()));
+              },),),],),
+            SizedBox(
+              width: 300,
+              height: 275,
+              child: Image.asset('assets/gamelogo.gif', height: 150),
+            ),
 
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.fitWidth,
-          image: Image.asset('assets/homegamebg.png').image,
-        ),
-      ),
-      child: Scaffold(backgroundColor: Colors.transparent,
-        body:
-        Center(child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(height: 80,),
+            SizedBox(
+              width: 10,
+              height: 10,
+            ),
 
-              Text(
-                "Choose Any Game",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  color: Colors.brown,
-                  fontFamily: "Inter-SemiBold",),
-              ),
+            SizedBox(width: 230, height: 80, child: Text(
+              "Drag and drop the photo to match it",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                letterSpacing: 1.0,
+                fontSize: 20.0,
+                color: Colors.black,
+                fontFamily: "Inter-Regular",),
+            ),),
 
-              SizedBox(height: 30,),
 
-              Container(
-                margin: const EdgeInsets.all(5),
-                color: Colors.transparent,
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: 325.0,
-                  child: ElevatedButton(child: const Text(
-                    "Drag & Drop",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Color(0xFFFFEADA),
-                      fontFamily: "Inter-SemiBold",),
+            SizedBox(
+              width: 10,
+              height: 10,
+            ),
+
+            Container(
+              color: Colors.transparent,
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: Container(
+                height: 80,
+                width: 250,
+                child: ElevatedButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const <Widget>[
+                      Text(
+                        "Play",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          letterSpacing: 3.0,
+                          fontSize: 25.0,
+                          color: Colors.black,
+                          fontFamily: "Inter-SemiBold",),
+                      ),],),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: Colors.brown,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50.0))),
                   ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: Colors.brown,
-                      padding: const EdgeInsets.only(left: 50, right:50, top: 20, bottom: 20),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen1()));
-                    },
-                  ),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
+                  },
                 ),
               ),
+            ),
 
-              Container(
-                margin: const EdgeInsets.all(5),
-                color: Colors.transparent,
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: 325.0,
-                  child: ElevatedButton(child: const Text(
-                    "Remember It",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Color(0xFFFFEADA),
-                      fontFamily: "Inter-SemiBold",),
+            SizedBox(
+              width: 10,
+              height: 10,
+            ),
+
+            Container(
+              color: Colors.transparent,
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: Container(
+                height: 60,
+                width: 150,
+                child: ElevatedButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const <Widget>[
+                      Text(
+                        "Exit",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          letterSpacing: 3.0,
+                          fontSize: 25.0,
+                          color: Colors.black,
+                          fontFamily: "Inter-SemiBold",),
+                      ),],),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: Color(0xFFCBA18F),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50.0))),
                   ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: Colors.brown,
-                      padding: const EdgeInsets.only(left: 50, right:50, top: 20, bottom: 20),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen2()));
-                    },
-                  ),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+                  },
                 ),
               ),
+            ),
 
-              SizedBox(height: 30,),
-
-              Container(
-                margin: const EdgeInsets.all(5),
-                color: Colors.transparent,
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: 250.0,
-                  child: ElevatedButton(child: const Text(
-                    "Exit Game",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.brown,
-                      fontFamily: "Inter-SemiBold",),
-                  ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: Color(0xFFC8A18F),
-                      padding: const EdgeInsets.only(left: 50, right:50, top: 20, bottom: 20),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
-                    },
-                  ),
-                ),
-              ),
-
-            ]),),
-
-      ),
+          ]),
     );
-
   }
+
 }
 

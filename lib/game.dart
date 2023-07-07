@@ -5,135 +5,6 @@ import 'dart:async';
 import 'main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class GameScreen1 extends StatefulWidget {
-  final newscore;
-  GameScreen1({this.newscore});
-  @override
-  _GameScreen1State createState() => _GameScreen1State();
-}
-class _GameScreen1State extends State<GameScreen1> {
-  Game gm = Game();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body:
-      Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,children: [SizedBox(width: 400,height: 45, child: IconButton(icon: const Icon(Icons.help_outline),
-              color: Colors.brown,
-              alignment: Alignment.centerRight,
-              iconSize: 45,onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const InstructionGame1()));
-              },),),],),
-            SizedBox(
-              width: 300,
-              height: 275,
-              child: Image.asset('assets/gamelogo.gif', height: 150),
-            ),
-
-            SizedBox(
-              width: 10,
-              height: 10,
-            ),
-
-            SizedBox(width: 230, height: 80, child: Text(
-              "Drag and drop the photo to match it",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                letterSpacing: 1.0,
-                fontSize: 20.0,
-                color: Colors.black,
-                fontFamily: "Inter-Regular",),
-            ),),
-
-
-            SizedBox(
-              width: 10,
-              height: 10,
-            ),
-
-            Container(
-              color: Colors.transparent,
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Container(
-                height: 80,
-                width: 250,
-                child: ElevatedButton(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const <Widget>[
-                      Text(
-                        "Play",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          letterSpacing: 3.0,
-                          fontSize: 25.0,
-                          color: Colors.black,
-                          fontFamily: "Inter-SemiBold",),
-                      ),],),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: Colors.brown,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
-                  },
-                ),
-              ),
-            ),
-
-            SizedBox(
-              width: 10,
-              height: 10,
-            ),
-
-            Container(
-              color: Colors.transparent,
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Container(
-                height: 60,
-                width: 150,
-                child: ElevatedButton(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const <Widget>[
-                      Text(
-                        "Exit",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          letterSpacing: 3.0,
-                          fontSize: 25.0,
-                          color: Colors.black,
-                          fontFamily: "Inter-SemiBold",),
-                      ),],),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: Color(0xFFCBA18F),
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => GameHome()));
-                  },
-                ),
-              ),
-            ),
-
-          ]),
-    );
-  }
-
-}
-
 class Game extends StatefulWidget {
   const Game({Key? key}) : super(key: key);
 
@@ -143,11 +14,11 @@ class Game extends StatefulWidget {
     return _GameState();
   }
 }
+
 class _GameState extends State<Game> {
 
   late SharedPreferences prefs;
 
-  int tries = 0;
   int score = 0;
 
   late List<ItemModel> items;
@@ -181,56 +52,72 @@ class _GameState extends State<Game> {
       ItemModel(image: 'assets/images/ajwa/1.jpg', name:"Ajwa", value:"Ajwa"),
       ItemModel(image: 'assets/images/ajwa/2.jpg', name:"Ajwa", value:"Ajwa"),
       ItemModel(image: 'assets/images/ajwa/3.jpg', name:"Ajwa", value:"Ajwa"),
-      ItemModel(image: 'assets/images/ajwa/4.png', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/4.jpg', name:"Ajwa", value:"Ajwa"),
       ItemModel(image: 'assets/images/ajwa/5.jpg', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/6.jpg', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/7.png', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/8.jpg', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/9.jpg', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/10.jpg', name:"Ajwa", value:"Ajwa"),
+      ItemModel(image: 'assets/images/ajwa/11.jpg', name:"Ajwa", value:"Ajwa"),
 
-      ItemModel(image: 'assets/images/medjool/1.png',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/1.jpg',name:"Medjool", value:"Medjool"),
       ItemModel(image: 'assets/images/medjool/2.jpg',name:"Medjool", value:"Medjool"),
       ItemModel(image: 'assets/images/medjool/3.jpg',name:"Medjool", value:"Medjool"),
       ItemModel(image: 'assets/images/medjool/4.jpg',name:"Medjool", value:"Medjool"),
       ItemModel(image: 'assets/images/medjool/5.jpg',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/6.png',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/7.jpg',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/8.png',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/9.jpg',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/10.jpg',name:"Medjool", value:"Medjool"),
+      ItemModel(image: 'assets/images/medjool/11.png',name:"Medjool", value:"Medjool"),
 
-      ItemModel(image: 'assets/images/rutab/1.JPG',name:"Rutab", value:"Rutab"),
-      ItemModel(image: 'assets/images/rutab/2.JPG',name:"Rutab", value:"Rutab"),
-      ItemModel(image: 'assets/images/rutab/3.JPG',name:"Rutab", value:"Rutab"),
-      ItemModel(image: 'assets/images/rutab/4.JPG',name:"Rutab", value:"Rutab"),
-      ItemModel(image: 'assets/images/rutab/5.jpg',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/1.jpg',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/2.jpg',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/3.jpg',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/4.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/5.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/6.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/7.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/8.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/9.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/10.png',name:"Rutab", value:"Rutab"),
+      ItemModel(image: 'assets/images/rutab/11.png',name:"Rutab", value:"Rutab"),
 
       ItemModel(image: 'assets/images/galaxy/1.JPG',name:"Galaxy", value:"Galaxy"),
-      ItemModel(image: 'assets/images/galaxy/2.JPG',name:"Galaxy", value:"Galaxy"),
-      ItemModel(image: 'assets/images/galaxy/3.JPG',name:"Galaxy", value:"Galaxy"),
-      ItemModel(image: 'assets/images/galaxy/4.JPG',name:"Galaxy", value:"Galaxy"),
-      ItemModel(image: 'assets/images/galaxy/5.JPG',name:"Galaxy", value:"Galaxy"),
 
       ItemModel(image: 'assets/images/meneifi/1.jpg',name:"Meneifi", value:"Meneifi"),
-      ItemModel(image: 'assets/images/meneifi/2.JPG',name:"Meneifi", value:"Meneifi"),
-      ItemModel(image: 'assets/images/meneifi/3.JPG',name:"Meneifi", value:"Meneifi"),
-      ItemModel(image: 'assets/images/meneifi/4.JPG',name:"Meneifi", value:"Meneifi"),
-      ItemModel(image: 'assets/images/meneifi/5.JPG',name:"Meneifi", value:"Meneifi"),
+      ItemModel(image: 'assets/images/meneifi/2.png',name:"Meneifi", value:"Meneifi"),
+      ItemModel(image: 'assets/images/meneifi/3.png',name:"Meneifi", value:"Meneifi"),
+      ItemModel(image: 'assets/images/meneifi/4.png',name:"Meneifi", value:"Meneifi"),
+      ItemModel(image: 'assets/images/meneifi/5.jpg',name:"Meneifi", value:"Meneifi"),
 
-      ItemModel(image: 'assets/images/sugaey/1.JPG',name:"Sugaey", value:"Sugaey"),
-      ItemModel(image: 'assets/images/sugaey/2.JPG',name:"Sugaey", value:"Sugaey"),
-      ItemModel(image: 'assets/images/sugaey/3.JPG',name:"Sugaey", value:"Sugaey"),
-      ItemModel(image: 'assets/images/sugaey/4.JPG',name:"Sugaey", value:"Sugaey"),
-      ItemModel(image: 'assets/images/sugaey/5.jpg',name:"Sugaey", value:"Sugaey"),
+      ItemModel(image: 'assets/images/sugaey/1.jpg',name:"Sugaey", value:"Sugaey"),
+      ItemModel(image: 'assets/images/sugaey/2.png',name:"Sugaey", value:"Sugaey"),
+      ItemModel(image: 'assets/images/sugaey/3.png',name:"Sugaey", value:"Sugaey"),
+      ItemModel(image: 'assets/images/sugaey/4.png',name:"Sugaey", value:"Sugaey"),
+      ItemModel(image: 'assets/images/sugaey/5.png',name:"Sugaey", value:"Sugaey"),
 
-      ItemModel(image: 'assets/images/shaishe/1.JPG',name:"Shaishe", value:"Shaishe"),
-      ItemModel(image: 'assets/images/shaishe/2.JPG',name:"Shaishe", value:"Shaishe"),
-      ItemModel(image: 'assets/images/shaishe/3.JPG',name:"Shaishe", value:"Shaishe"),
-      ItemModel(image: 'assets/images/shaishe/4.JPG',name:"Shaishe", value:"Shaishe"),
-      ItemModel(image: 'assets/images/shaishe/5.JPG',name:"Shaishe", value:"Shaishe"),
+      ItemModel(image: 'assets/images/shaishe/1.jpg',name:"Shaishe", value:"Shaishe"),
 
-      ItemModel(image: 'assets/images/nabtatali/1.JPG',name:"Nabtat Ali", value: "Nabtat Ali"),
-      ItemModel(image: 'assets/images/nabtatali/2.JPG',name:"Nabtat Ali", value: "Nabtat Ali"),
-      ItemModel(image: 'assets/images/nabtatali/3.JPG',name:"Nabtat Ali", value: "Nabtat Ali"),
-      ItemModel(image: 'assets/images/nabtatali/4.JPG',name:"Nabtat Ali", value: "Nabtat Ali"),
-      ItemModel(image: 'assets/images/nabtatali/5.jpg',name:"Nabtat Ali", value: "Nabtat Ali"),
+      ItemModel(image: 'assets/images/nabtatali/1.jpg',name:"Nabtat Ali", value: "Nabtat Ali"),
+      ItemModel(image: 'assets/images/nabtatali/2.jpg',name:"Nabtat Ali", value: "Nabtat Ali"),
+      ItemModel(image: 'assets/images/nabtatali/3.jpg',name:"Nabtat Ali", value: "Nabtat Ali"),
+      ItemModel(image: 'assets/images/nabtatali/4.jpg',name:"Nabtat Ali", value: "Nabtat Ali"),
+      ItemModel(image: 'assets/images/nabtatali/5.png',name:"Nabtat Ali", value: "Nabtat Ali"),
 
       ItemModel(image: 'assets/images/sokari/1.jpg',name:"Sokari", value:"Sokari"),
       ItemModel(image: 'assets/images/sokari/2.jpg',name:"Sokari", value:"Sokari"),
       ItemModel(image: 'assets/images/sokari/3.jpg',name:"Sokari", value:"Sokari"),
-      ItemModel(image: 'assets/images/sokari/4.png',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/4.jpg',name:"Sokari", value:"Sokari"),
       ItemModel(image: 'assets/images/sokari/5.jpg',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/6.png',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/7.jpg',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/8.jpg',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/9.jpg',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/10.jpg',name:"Sokari", value:"Sokari"),
+      ItemModel(image: 'assets/images/sokari/11.png',name:"Sokari", value:"Sokari"),
     ];
     items.shuffle();
 
@@ -345,7 +232,6 @@ class _GameState extends State<Game> {
                                   } else {
                                     setState(() {
                                       score -= 5;
-                                      tries++;
                                       item.accepting = false;
                                       Fluttertoast.showToast(
                                           msg: "Wrong answer X",
@@ -538,7 +424,7 @@ class _GameState extends State<Game> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      'Wrong tries: ${tries}', /*call high score database*/
+                                      'Best score: ${prefs.getInt('scoredata')}', /*call high score database*/
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         letterSpacing: 3.0,
@@ -576,7 +462,7 @@ class _GameState extends State<Game> {
                                     ),
                                     onPressed: () {
                                       Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => GameScreen1()));
+                                          builder: (context) => GameScreen()));
                                     },
                                   ),
                                 ),
@@ -632,7 +518,7 @@ class _GameState extends State<Game> {
                                     ),
                                     onPressed: () {
                                       Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => GameHome()));
+                                          builder: (context) => MyHomePage()));
                                     },
                                   ),
                                 ),
@@ -675,8 +561,8 @@ class ItemModel {
   ItemModel({required this.name, required this.value, required this.image, this.accepting= false});
 }
 
-class InstructionGame1 extends StatelessWidget {
-  const InstructionGame1({Key? key}) : super(key: key);
+class InstructionGame extends StatelessWidget {
+  const InstructionGame({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
